@@ -4,7 +4,7 @@ import { createTRPCRouter, publicProcedure } from "../trpc";
 
 export const articlesRouter = createTRPCRouter({
         create: publicProcedure
-            .input(z.object({ title: z.string(),content:z.string() }))
+            .input(z.object({ title: z.string().min(1),content:z.string().min(1) }))
             .mutation(({ input,ctx}) => {
                 return ctx.prisma.article.create({
                     data: {
@@ -21,10 +21,27 @@ export const articlesRouter = createTRPCRouter({
                         id:input
                     },
                 })
-    }),
-    getAll: publicProcedure
-    .query(({ctx})=>{
+        }),
+        getAll: publicProcedure
+        .query(({ctx})=>{
         return ctx.prisma.article.findMany()
-    }),
-
+        }),
+        delete: publicProcedure
+        .input(z.string())
+        .mutation(({ctx, input:id})=>{
+            return ctx.prisma.article.delete({where:{id}})
+        }),
+        update:publicProcedure
+        .input(z.object({
+            id:z.string(),
+            data:z.object({
+                title:z.string().min(1).optional(),
+                content:z.string().min(1).optional()
+            })}))
+        .mutation(({ctx,input})=>{
+            const {id,data}=input;
+            return ctx.prisma.article.update({
+                where:{id},
+            data})
+        }),
     });

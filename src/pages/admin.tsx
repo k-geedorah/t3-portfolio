@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AddArticle from "y/comps/addArticle";
-import Edit from "y/comps/edit";
-import Footer from "y/comps/footer";
-import NavBar from "y/comps/navbar";
+import AddArticle from "y/comps/AddArticle";
+import Edit from "y/comps/Edit";
+import Footer from "y/comps/Footer";
+import NavBar from "y/comps/NavBar";
 
 export default function Admin() {
   const [add, isAddActive] = useState(true);

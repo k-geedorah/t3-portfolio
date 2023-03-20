@@ -1,6 +1,6 @@
-import NavBar from "../../comps/navbar";
+import NavBar from "../../comps/NavBar";
 import Head from "next/head";
-import Footer from "../../comps/footer";
+import Footer from "../../comps/Footer";
 import Router from "next/router";
 import { URLS } from "../../constants/urls";
 import { type Key } from "react";

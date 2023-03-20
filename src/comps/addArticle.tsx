@@ -14,11 +14,11 @@ export default function AddArticle() {
 
   const articleAdd = api.articles.create.useMutation();
   const { register, handleSubmit } = useForm<FormData>();
-  const onSubmit = handleSubmit((data, e) => {
+  const onSubmit = handleSubmit(async (data, e) => {
     const { title, content } = data;
-    articleAdd.mutate({ title, content });
+    await articleAdd.mutate({ title, content });
     e.target.reset();
-    Router.push(`${URLS.ARTICLES}`);
+    Router.push(URLS.ARTICLES);
   });
   return (
     <div className=" flex w-5/6 flex-col place-content-center content-center justify-center">

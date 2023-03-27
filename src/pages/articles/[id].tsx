@@ -2,7 +2,7 @@ import NavBar from "../../comps/NavBar";
 import Head from "next/head";
 import Footer from "../../comps/Footer";
 import { useRouter } from "next/router";
-import { api } from "y/utils/api";
+import { api } from "../../utils/api";
 
 export default function Article() {
   const router = useRouter();

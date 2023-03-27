@@ -32,7 +32,7 @@ export default function AddArticle() {
           />
           <textarea
             {...register("content", { required: true })}
-            className="m-2 h-3/4 h-[100px] w-full rounded-md bg-zinc-500 px-3 placeholder:text-zinc-300"
+            className="m-2 h-[100px] w-full rounded-md bg-zinc-500 px-3 placeholder:text-zinc-300"
             placeholder="Insert Content"
           />
           <input

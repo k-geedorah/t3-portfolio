@@ -1,9 +1,9 @@
 import { z } from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 
 export const articlesRouter = createTRPCRouter({
-        create: publicProcedure
+        create: protectedProcedure
             .input(z.object({ title: z.string().min(1),content:z.string().min(1) }))
             .mutation(({ input,ctx}) => {
                 return ctx.prisma.article.create({
@@ -13,7 +13,7 @@ export const articlesRouter = createTRPCRouter({
                 }
             })
         }),
-        byId: publicProcedure
+        byId: protectedProcedure
         .input(z.string())
         .query(({ input,ctx }) => {
                 return ctx.prisma.article.findUnique({
@@ -22,16 +22,16 @@ export const articlesRouter = createTRPCRouter({
                     },
                 })
         }),
-        getAll: publicProcedure
+        getAll: protectedProcedure
         .query(({ctx})=>{
         return ctx.prisma.article.findMany()
         }),
-        delete: publicProcedure
+        delete: protectedProcedure
         .input(z.string())
         .mutation(({ctx, input:id})=>{
             return ctx.prisma.article.delete({where:{id}})
         }),
-        update:publicProcedure
+        update:protectedProcedure
         .input(z.object({
             id:z.string(),
             data:z.object({

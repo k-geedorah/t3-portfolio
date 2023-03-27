@@ -64,6 +64,7 @@ export default function Edit() {
                 className="rounded-full bg-zinc-800/90  px-4 py-1 text-sm font-medium text-white text-zinc-200 ring-1 ring-white/10"
                 onClick={() => {
                   articleDelete.mutate(article.id);
+                  Router.push(URLS.ADMIN);
                 }}
               >
                 {" "}

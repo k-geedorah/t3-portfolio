@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AddArticle from "../comps/AddArticle";
-import Edit from "../comps/Edit";
-import Footer from "../comps/Footer";
-import NavBar from "../comps/NavBar";
+import AddArticle from "../../components/AddArticle";
+import Edit from "../../components/Edit";
+import Footer from "../../components/Footer";
+import NavBar from "../../components/NavBar";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Admin() {

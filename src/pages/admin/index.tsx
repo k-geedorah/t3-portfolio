@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AddArticle from "../../components/AddArticle";
+import AddArticle from "../../components/create";
 import Edit from "../../components/Edit";
 import Footer from "../../components/Footer";
 import NavBar from "../../components/NavBar";

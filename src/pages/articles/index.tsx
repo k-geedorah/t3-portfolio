@@ -1,9 +1,12 @@
 import NavBar from "../../components/NavBar";
 import Head from "next/head";
 import Footer from "../../components/Footer";
-import ArticleItemList from "y/components/ArticleItemList";
+import ArticleListItem from "y/components/ArticleListItem";
+import { api } from "y/utils/api";
 
 export default function Page() {
+  const articles = api.articles.getAll.useQuery();
+  const data = articles.data;
   // const articles=api.articles.getAll.useQuery();
   return (
     <div>
@@ -23,7 +26,7 @@ export default function Page() {
           All of my long-form thoughts on programming, leadership, product
           design, and more, collected in chronological order.
         </p>
-        <ArticleItemList/>
+        <ArticleListItem data={data} />
       </div>
       <Footer />
     </div>

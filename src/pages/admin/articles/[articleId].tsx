@@ -8,7 +8,7 @@ type FormData = {
   content: string;
 };
 
-export default function ArticleId() {
+export default function ArticleDetails() {
   const router = useRouter();
   const { articleId } = router.query;
   const articleResponse = api.articles.byId.useQuery(articleId);

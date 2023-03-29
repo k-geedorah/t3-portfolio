@@ -9,7 +9,7 @@ type FormData = {
   content: string;
 };
 
-export default function AddArticle() {
+export default function CreateArticle() {
   const [state, setState] = React.useState("");
   const onInput = (e) => setState(e.target.value);
 

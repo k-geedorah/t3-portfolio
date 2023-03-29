@@ -1,6 +1,6 @@
 import Router from "next/router";
-import { URLS } from "../../constants/urls";
 import { type Key } from "react";
+import { URLS } from "y/constants/urls";
 import { api } from "y/utils/api";
 export default function ArticleItemList() {
   const articles = api.articles.getAll.useQuery();

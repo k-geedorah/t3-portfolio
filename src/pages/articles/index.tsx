@@ -25,8 +25,25 @@ export default function Page() {
         <p className="mb-10 text-base text-zinc-400">
           All of my long-form thoughts on programming, leadership, product
           design, and more, collected in chronological order.
-        </p>
-        <ArticleListItem data={data} />
+        </p>{" "}
+        {data?.map(
+          (article: {
+            id: Key;
+            createdAt: Object;
+            title: string;
+            content: string;
+          }) => (
+            <div>
+              <div key={article.id}>
+                <ArticleListItem
+                  id={article.id}
+                  title={article.title}
+                  content={article.content}
+                />
+              </div>
+            </div>
+          )
+        )}
       </div>
       <Footer />
     </div>

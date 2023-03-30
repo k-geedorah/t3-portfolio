@@ -3,11 +3,11 @@ import Head from "next/head";
 import Footer from "../../components/Footer";
 import ArticleListItem from "y/components/ArticleListItem";
 import { api } from "y/utils/api";
+import { type Key } from "react";
 
 export default function Page() {
   const articles = api.articles.getAll.useQuery();
   const data = articles.data;
-  // const articles=api.articles.getAll.useQuery();
   return (
     <div>
       <Head>
@@ -33,15 +33,11 @@ export default function Page() {
             title: string;
             content: string;
           }) => (
-            <div>
-              <div key={article.id}>
-                <ArticleListItem
-                  id={article.id}
-                  title={article.title}
-                  content={article.content}
-                />
-              </div>
-            </div>
+            <ArticleListItem
+              id={article.id}
+              title={article.title}
+              content={article.content}
+            />
           )
         )}
       </div>

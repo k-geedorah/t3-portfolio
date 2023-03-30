@@ -10,16 +10,12 @@ type FormData = {
 };
 
 export default function CreateArticle() {
-  const [state, setState] = React.useState("");
-  const onInput = (e) => setState(e.target.value);
-
   const articleAdd = api.articles.create.useMutation();
   const { register, handleSubmit } = useForm<FormData>();
-  const onSubmit = handleSubmit(async (data, e) => {
+  const onSubmit = handleSubmit(async (data) => {
     const { title, content } = data;
     await articleAdd.mutate({ title, content });
-    e.target.reset();
-    Router.push(URLS.ARTICLES);
+    Router.push(`${URLS.ADMIN}/articles`);
   });
   return (
     <Layout>
@@ -30,7 +26,6 @@ export default function CreateArticle() {
               {...register("title", { required: true })}
               className="m-2 w-full rounded-md bg-zinc-500 px-3 placeholder:text-zinc-300"
               placeholder="Insert Title"
-              onInput={onInput}
             />
             <textarea
               {...register("content", { required: true })}

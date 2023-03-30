@@ -8,7 +8,6 @@ export default function ArticlesPage() {
   const data = articles.data;
   const articleDelete = api.articles.delete.useMutation();
   return (
-    <>
       <Layout>
         <div className=" min-h-screen w-11/12 px-16">
           {data?.map((article) => (
@@ -43,6 +42,5 @@ export default function ArticlesPage() {
           ))}
         </div>
       </Layout>
-    </>
   );
 }
